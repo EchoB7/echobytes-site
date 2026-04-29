@@ -14,21 +14,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "YouOTT — Apps OTT white-label",
-    template: "%s — YouOTT",
+    default: "YourottApp — Apps OTT White-Label",
+    template: "%s — YourottApp",
   },
   description:
-    "Apps OTT white-label sob medida para Smart TVs, mobile e web. Integrações, monetização e suporte para operações premium.",
-  applicationName: "YouOTT",
-  authors: [{ name: "YouOTT" }],
-  metadataBase: new URL("https://youott.com"),
+    "Apps OTT white-label para Samsung TV, LG, Roku, Android, iOS, Apple TV, Fire TV, Web e desktop. Sua marca em 12 plataformas.",
+  applicationName: "YourottApp",
+  authors: [{ name: "YourottApp" }],
+  metadataBase: new URL("https://yourottapp.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "YouOTT — Apps OTT white-label",
+    title: "YourottApp — Apps OTT White-Label",
     description:
-      "Lance sua marca em Smart TVs, mobile e web com uma experiência premium e integrações sob medida.",
-    url: "https://youott.com",
-    siteName: "YouOTT",
+      "Lance seu streaming em qualquer tela com app white-label profissional. 12 plataformas, entrega em 30 dias.",
+    url: "https://yourottapp.com",
+    siteName: "YourottApp",
     locale: "pt_BR",
     type: "website",
   },

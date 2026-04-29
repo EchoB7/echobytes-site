@@ -1,59 +1,55 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-
+import { useState } from "react";
 import { getWhatsAppUrl, site } from "@/content/site";
 
 const nav = [
-  { href: "/", label: "Home" },
-  { href: "/plataformas", label: "Plataformas" },
-  { href: "/modelos", label: "Modelos" },
-  { href: "/portfolio", label: "Portfólio" },
-  { href: "/faq", label: "FAQ" },
+  { href: "#plataformas", label: "Plataformas" },
+  { href: "#recursos", label: "Recursos" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#pacotes", label: "Preços" },
+  { href: "#contato", label: "Contato" },
 ];
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
   const whatsappUrl = getWhatsAppUrl(site.links.whatsapp);
 
   return (
-    <header className="sticky top-0 z-20 border-b" style={{ borderColor: "#222", background: "rgba(10,10,10,0.92)", backdropFilter: "blur(8px)" }}>
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4">
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 font-bold tracking-tight text-white hover:opacity-90"
-        >
-          <Image src="/icon.png" alt="YourottApp" width={32} height={32} className="rounded-lg" />
-          <span style={{ color: "#f0f0f0" }}>{site.brand.name}</span>
+    <header style={{
+      position: "sticky", top: 0, zIndex: 50,
+      borderBottom: "1px solid #1a1a1a",
+      background: "rgba(8,8,8,0.92)",
+      backdropFilter: "blur(12px)",
+    }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+        {/* Logo */}
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+          <Image src="/icon.png" alt="YourottApp" width={34} height={34} style={{ borderRadius: 8 }} />
+          <span style={{ fontWeight: 800, fontSize: "1.1rem", color: "#f0f0f0", letterSpacing: "-0.02em" }}>
+            Yourott<span style={{ color: "#e50914" }}>App</span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm sm:flex" style={{ color: "#aaa" }}>
+        {/* Desktop nav */}
+        <nav style={{ display: "flex", alignItems: "center", gap: 32 }} className="hidden sm:flex">
           {nav.map((item) => (
-            <Link
-              key={item.href}
-              className="transition-colors hover:text-white"
-              style={{ color: "#aaa" }}
-              href={item.href}
-            >
-              {item.label}
-            </Link>
+            <a key={item.href} href={item.href} className="nav-link">{item.label}</a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <a
-            href={whatsappUrl}
-            className="hidden rounded-full border px-4 py-2 text-sm font-medium transition-colors hover:border-red-600 hover:text-red-500 sm:inline-flex"
-            style={{ borderColor: "#333", color: "#ccc", background: "transparent" }}
-            target="_blank"
-            rel="noreferrer"
-          >
+        {/* CTA */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <a href={whatsappUrl} target="_blank" rel="noreferrer"
+            style={{ display: "none", fontSize: "0.85rem", color: "#aaa", borderBottom: "1px solid transparent", transition: "color 0.2s" }}
+            className="sm:!inline"
+            onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={e => (e.currentTarget.style.color = "#aaa")}>
             WhatsApp
           </a>
-          <a
-            href={site.links.demo.url}
-            className="inline-flex rounded-full px-4 py-2 text-sm font-semibold text-white transition-colors echobytes-cta"
-            style={{ background: "#e50914" }}
-          >
-            {site.links.demo.label}
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="btn-red" style={{ padding: "10px 20px", fontSize: "0.85rem" }}>
+            Falar com vendas
           </a>
         </div>
       </div>

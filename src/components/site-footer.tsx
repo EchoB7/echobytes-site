@@ -2,41 +2,47 @@ import { getWhatsAppUrl, site } from "@/content/site";
 
 export function SiteFooter() {
   const whatsappUrl = getWhatsAppUrl(site.links.whatsapp);
+  const year = new Date().getFullYear();
 
   return (
-    <footer style={{ borderTop: "1px solid #222", background: "#111" }}>
-      <div className="mx-auto w-full max-w-5xl px-6 py-10">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <footer id="contato" style={{ borderTop: "1px solid #1a1a1a", background: "#080808" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 24px 40px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 48, marginBottom: 48 }}>
+          {/* Brand */}
           <div>
-            <p className="text-sm font-bold" style={{ color: "#f0f0f0" }}>{site.brand.name}</p>
-            <p className="mt-1 text-sm" style={{ color: "#666" }}>{site.brand.domain}</p>
+            <p style={{ fontWeight: 800, fontSize: "1.1rem", color: "#f0f0f0", letterSpacing: "-0.02em", marginBottom: 8 }}>
+              Yourott<span style={{ color: "#e50914" }}>App</span>
+            </p>
+            <p style={{ fontSize: "0.875rem", color: "#666", lineHeight: 1.6 }}>
+              Apps OTT white-label para qualquer tela — Smart TV, mobile, web e desktop.
+            </p>
           </div>
-          <div className="flex flex-col gap-2 text-sm sm:items-end" style={{ color: "#888" }}>
-            <a className="hover:text-white transition-colors" style={{ color: "#888" }} href={`mailto:${site.links.email}`}>
-              {site.links.email}
-            </a>
-            <a
-              className="hover:text-white transition-colors"
-              style={{ color: "#888" }}
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp
-            </a>
-            <a
-              className="hover:text-white transition-colors"
-              style={{ color: "#888" }}
-              href="/privacy"
-            >
-              Política de Privacidade
-            </a>
+
+          {/* Links */}
+          <div>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#666", marginBottom: 16 }}>Produto</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {["Plataformas", "Recursos", "Portfolio", "Preços"].map(l => (
+                <a key={l} href={`#${l.toLowerCase()}`} className="footer-link">{l}</a>
+              ))}
+            </div>
+          </div>
+
+          {/* Contato */}
+          <div>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#666", marginBottom: 16 }}>Contato</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <a href={`mailto:${site.links.email}`} className="footer-link">{site.links.email}</a>
+              <a href={whatsappUrl} target="_blank" rel="noreferrer" className="footer-link">WhatsApp</a>
+              <a href="/privacy" className="footer-link">Política de Privacidade</a>
+            </div>
           </div>
         </div>
-        <p className="mt-8 text-xs" style={{ color: "#555" }}>
-          © {new Date().getFullYear()} {site.brand.name}. Todos os direitos
-          reservados.
-        </p>
+
+        <div style={{ borderTop: "1px solid #1a1a1a", paddingTop: 24, display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "space-between", alignItems: "center" }}>
+          <p style={{ fontSize: "0.8rem", color: "#555" }}>© {year} YourottApp. Todos os direitos reservados.</p>
+          <p style={{ fontSize: "0.8rem", color: "#555" }}>{site.brand.domain}</p>
+        </div>
       </div>
     </footer>
   );
