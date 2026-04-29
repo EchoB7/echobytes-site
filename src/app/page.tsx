@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import {
   siSamsung, siLg, siRoku, siGoogletv,
   siApple, siAppletv, siAndroid, siLinux, siFirefoxbrowser,
 } from "simple-icons";
 import { getWhatsAppUrl, site } from "@/content/site";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // ── Design tokens ──────────────────────────────────────────────
 const W = 1200; // max-width
@@ -38,102 +40,90 @@ const PLATFORMS: Platform[] = [
   { label: "Linux",       svgPath: siLinux.path,        hex: siLinux.hex },
 ];
 
-const FEATURES = [
-  {
-    icon: "🎨",
-    title: "100% White-Label",
-    desc: "Nome, logo, cores e identidade visual totalmente personalizados. Seu cliente não sabe que existe um desenvolvedor por trás.",
-  },
-  {
-    icon: "⚡",
-    title: "12 Plataformas",
-    desc: "Um único app entregue em Smart TV Samsung, LG, Roku, Android TV, Fire TV, Apple TV, iOS, Android, Web, Windows, macOS e Linux.",
-  },
-  {
-    icon: "🔗",
-    title: "Integrações Nativas",
-    desc: "Compatível com Xtream Codes, M3U, TMDB, EPG e painéis de revendedor. Pronto para conectar qualquer provedor de IPTV.",
-  },
-  {
-    icon: "🛠️",
-    title: "Suporte & Updates",
-    desc: "Atualizações contínuas e suporte técnico incluídos. Seu app evolui junto com o mercado, sem custo extra.",
-  },
-  {
-    icon: "📊",
-    title: "Painel de Gestão",
-    desc: "Controle de usuários, playlists, ativação de planos e relatórios de acesso em um painel web intuitivo.",
-  },
-  {
-    icon: "🔒",
-    title: "Controle Parental & DRM",
-    desc: "Bloqueio por PIN, filtros de conteúdo por categoria e proteção de conteúdo para operações premium.",
-  },
-];
-
-const SCREENSHOTS = [
-  { file: "Home.png",         label: "Tela Principal" },
-  { file: "Player.png",       label: "Player de Vídeo" },
-  { file: "Movies.png",       label: "Filmes" },
-  { file: "Series.png",       label: "Séries" },
-  { file: "Config.png",       label: "Configurações" },
-  { file: "LoginProvider.png",label: "Login" },
-];
-
-const PACKAGES = [
-  {
-    title: "Starter",
-    subtitle: "Para provedores iniciantes",
-    price: "Consulte",
-    bullets: [
-      "Android TV + Fire TV",
-      "Android Mobile + iOS",
-      "Web Player",
-      "Sua marca e logo",
-      "Suporte 30 dias",
-    ],
-    featured: false,
-  },
-  {
-    title: "Pro",
-    subtitle: "Mais escolhido",
-    price: "Consulte",
-    bullets: [
-      "Tudo do Starter",
-      "Samsung Smart TV",
-      "LG webOS",
-      "Roku TV",
-      "Apple TV",
-      "Painel de gestão",
-      "Suporte 90 dias",
-    ],
-    featured: true,
-  },
-  {
-    title: "Enterprise",
-    subtitle: "Cobertura total",
-    price: "Consulte",
-    bullets: [
-      "Tudo do Pro",
-      "Windows, macOS, Linux",
-      "Customizações avançadas",
-      "Integração com revendedor",
-      "SLA prioritário",
-      "Updates 12 meses",
-    ],
-    featured: false,
-  },
-];
-
-const STEPS = [
-  { n: "1", title: "Briefing", desc: "Você nos envia logo, cores e dados da sua marca. Em 24h já temos o projeto configurado." },
-  { n: "2", title: "Desenvolvimento", desc: "Nossa equipe constrói e testa o app em todas as plataformas contratadas." },
-  { n: "3", title: "Entrega & Publicação", desc: "App publicado nas lojas (Google Play, App Store, etc.) com sua conta de developer." },
-];
-
 // ── Component ──────────────────────────────────────────────────
 export default function HomePage() {
   const wa = getWhatsAppUrl(site.links.whatsapp);
+  const { t } = useLanguage();
+
+  const FEATURES = [
+    { icon: "🎨", title: t("feat_wl_title"),    desc: t("feat_wl_desc") },
+    { icon: "⚡",  title: t("feat_12_title"),    desc: t("feat_12_desc") },
+    { icon: "🔗", title: t("feat_int_title"),   desc: t("feat_int_desc") },
+    { icon: "🛠️", title: t("feat_sup_title"),   desc: t("feat_sup_desc") },
+    { icon: "📊", title: t("feat_panel_title"), desc: t("feat_panel_desc") },
+    { icon: "🔒", title: t("feat_drm_title"),   desc: t("feat_drm_desc") },
+  ];
+
+  const SCREENSHOTS = [
+    { file: "Home.png",          label: t("screen_home") },
+    { file: "Player.png",        label: t("screen_player") },
+    { file: "Movies.png",        label: t("screen_movies") },
+    { file: "Series.png",        label: t("screen_series") },
+    { file: "Config.png",        label: t("screen_config") },
+    { file: "LoginProvider.png", label: t("screen_login") },
+  ];
+
+  const MODEL2 = [
+    { file: "Home.png",          label: t("screen_home") },
+    { file: "Live.png",          label: t("screen_live") },
+    { file: "SearchLive.png",    label: t("screen_search_live") },
+    { file: "Movies.png",        label: t("screen_movies") },
+    { file: "MoviesSinopse.png", label: t("screen_movies_sinopse") },
+    { file: "Series.png",        label: t("screen_series") },
+    { file: "Player.png",        label: t("screen_player") },
+    { file: "SearchMovies.png",  label: t("screen_search_movies") },
+  ];
+
+  const PACKAGES = [
+    {
+      title: "Starter",
+      subtitle: t("pkg_starter_subtitle"),
+      price: "Consulte",
+      bullets: [
+        "Android TV + Fire TV",
+        "Android Mobile + iOS",
+        "Web Player",
+        t("pkg_brand"),
+        t("pkg_support_30"),
+      ],
+      featured: false,
+    },
+    {
+      title: "Pro",
+      subtitle: t("pkg_pro_subtitle"),
+      price: "Consulte",
+      bullets: [
+        "Tudo do Starter",
+        "Samsung Smart TV",
+        "LG webOS",
+        "Roku TV",
+        "Apple TV",
+        t("pkg_panel"),
+        t("pkg_support_90"),
+      ],
+      featured: true,
+    },
+    {
+      title: "Enterprise",
+      subtitle: t("pkg_enterprise_subtitle"),
+      price: "Consulte",
+      bullets: [
+        "Tudo do Pro",
+        "Windows, macOS, Linux",
+        t("pkg_advanced"),
+        t("pkg_reseller"),
+        t("pkg_sla"),
+        t("pkg_updates_12"),
+      ],
+      featured: false,
+    },
+  ];
+
+  const STEPS = [
+    { n: "1", title: t("step1_title"), desc: t("step1_desc") },
+    { n: "2", title: t("step2_title"), desc: t("step2_desc") },
+    { n: "3", title: t("step3_title"), desc: t("step3_desc") },
+  ];
 
   return (
     <main style={{ background: "#080808", color: "#f0f0f0" }}>
@@ -154,7 +144,7 @@ export default function HomePage() {
           {/* Badge */}
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#130305", border: "1px solid #3a0009", borderRadius: 100, padding: "6px 14px", marginBottom: 28 }}>
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#e50914", display: "inline-block", animation: "pulse-glow 2s infinite" }}></span>
-            <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#ff6b6b", letterSpacing: "0.04em" }}>12 PLATAFORMAS · WHITE-LABEL · PRONTO PARA USO</span>
+            <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#ff6b6b", letterSpacing: "0.04em" }}>{t("hero_badge")}</span>
           </div>
 
           {/* Headline */}
@@ -166,30 +156,30 @@ export default function HomePage() {
             marginBottom: 24,
             color: "#f5f5f5",
           }}>
-            Seu app de streaming<br />
-            <span style={{ color: "#e50914" }}>em qualquer tela</span>
+            {t("hero_h1_1")}<br />
+            <span style={{ color: "#e50914" }}>{t("hero_h1_2")}</span>
           </h1>
 
           <p className="animate-fade-up-2" style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", color: "#999", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.7 }}>
-            Desenvolvemos apps OTT white-label completos — da Smart TV ao celular — com sua marca, logo e cores. Entregue em até 30 dias.
+            {t("hero_sub")}
           </p>
 
           {/* CTAs */}
           <div className="animate-fade-up-3" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <a href={wa} target="_blank" rel="noreferrer" className="btn-red">
-              💬 Solicitar orçamento
+              {t("hero_cta_quote")}
             </a>
             <a href="#portfolio" className="btn-ghost">
-              Ver portfolio →
+              {t("hero_cta_portfolio")}
             </a>
           </div>
 
           {/* Stats */}
           <div style={{ display: "flex", gap: 40, justifyContent: "center", flexWrap: "wrap", marginTop: 64 }}>
             {[
-              { n: "12", label: "Plataformas" },
-              { n: "30", label: "Dias p/ entrega" },
-              { n: "100%", label: "White-label" },
+              { n: t("stat_platforms"), label: t("nav_platforms") },
+              { n: t("stat_delivery"),   label: t("stat_delivery_label") },
+              { n: t("stat_whitelabel"), label: "White-label" },
             ].map(s => (
               <div key={s.n} style={{ textAlign: "center" }}>
                 <p style={{ fontSize: "2rem", fontWeight: 900, color: "#e50914", lineHeight: 1, letterSpacing: "-0.03em" }}>{s.n}</p>
@@ -204,12 +194,12 @@ export default function HomePage() {
       <section id="plataformas" style={{ padding: "80px 24px", borderTop: "1px solid #141414" }}>
         <div style={{ maxWidth: W, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <span className="section-label">Compatibilidade</span>
+            <span className="section-label">{t("sect_compat")}</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0" }}>
-              Um app, todas as telas
+              {t("platforms_h2")}
             </h2>
             <p style={{ color: "#777", marginTop: 12, fontSize: "1rem", maxWidth: 500, margin: "12px auto 0" }}>
-              Desenvolvemos nativamente para cada plataforma — sem soluções genéricas.
+              {t("platforms_sub")}
             </p>
           </div>
 
@@ -240,8 +230,8 @@ export default function HomePage() {
               background: "linear-gradient(transparent, rgba(0,0,0,0.8))",
               padding: "40px 28px 24px",
             }}>
-              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 6 }}>Demonstração ao vivo</p>
-              <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#f0f0f0" }}>App rodando em Android TV — White-label completo</p>
+              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 6 }}>{t("video_live_demo")}</p>
+              <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#f0f0f0" }}>{t("video_caption")}</p>
             </div>
           </div>
         </div>
@@ -251,9 +241,9 @@ export default function HomePage() {
       <section id="recursos" style={{ padding: "80px 24px", borderTop: "1px solid #141414" }}>
         <div style={{ maxWidth: W, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <span className="section-label">Recursos</span>
+            <span className="section-label">{t("sect_features")}</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0" }}>
-              Tudo que seu negócio precisa
+              {t("features_h2")}
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(310px, 1fr))", gap: 16 }}>
@@ -272,15 +262,15 @@ export default function HomePage() {
       <section id="portfolio" style={{ padding: "80px 24px", borderTop: "1px solid #141414", background: "#0a0a0a" }}>
         <div style={{ maxWidth: W, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <span className="section-label">Portfolio</span>
+            <span className="section-label">{t("sect_portfolio")}</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0" }}>
-              Interface de nível profissional
+              {t("portfolio_h2")}
             </h2>
-            <p style={{ color: "#777", marginTop: 12, fontSize: "1rem" }}>Screenshots reais do app rodando em TV e mobile</p>
+            <p style={{ color: "#777", marginTop: 12, fontSize: "1rem" }}>{t("portfolio_sub")}</p>
           </div>
 
           {/* Tab labels */}
-          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 16 }}>Smart TV / Android TV</p>
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 16 }}>{t("portfolio_smarttv_label")}</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14, marginBottom: 48 }}>
             {SCREENSHOTS.map(s => (
               <div key={s.file} style={{ position: "relative", overflow: "hidden", borderRadius: 10, border: "1px solid #1e1e1e", background: "#111" }}>
@@ -300,13 +290,13 @@ export default function HomePage() {
           </div>
 
           {/* Mobile screenshots */}
-          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 16 }}>Mobile — Android & iOS</p>
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 16 }}>{t("portfolio_mobile_label")}</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 14 }}>
             {["1", "2", "3", "4"].map((n, i) => (
               <div key={n} style={{ overflow: "hidden", borderRadius: 16, border: "1px solid #1e1e1e", background: "#111" }}>
                 <Image
                   src={`/portfolio/mobile/${n}.jpeg`}
-                  alt={`Mobile tela ${i + 1}`}
+                  alt={`${t("mobile_screen")} ${i + 1}`}
                   width={360}
                   height={640}
                   style={{ width: "100%", height: "auto", display: "block" }}
@@ -318,20 +308,13 @@ export default function HomePage() {
           {/* ── MODELO 2 ── */}
           <div style={{ marginTop: 64 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 8 }}>
-              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#a855f7", textTransform: "uppercase" }}>Modelo 2 — Interface Alternativa</p>
+              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#a855f7", textTransform: "uppercase" }}>{t("model2_label")}</p>
               <div style={{ flex: 1, height: 1, background: "#1e1e1e" }} />
             </div>
-            <p style={{ color: "#666", fontSize: "0.85rem", marginBottom: 24 }}>Skin alternativo com paleta roxa e dark — mesmo app, visual diferente.</p>
+            <p style={{ color: "#666", fontSize: "0.85rem", marginBottom: 24 }}>{t("model2_sub")}</p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
               {[
-                { file: "Home.png",         label: "Home" },
-                { file: "Live.png",         label: "TV ao Vivo" },
-                { file: "SearchLive.png",   label: "Busca — Ao Vivo" },
-                { file: "Movies.png",       label: "Filmes" },
-                { file: "MoviesSinopse.png",label: "Sinopse do Filme" },
-                { file: "Series.png",       label: "Séries" },
-                { file: "Player.png",       label: "Player" },
-                { file: "SearchMovies.png", label: "Busca — Filmes" },
+                ...MODEL2
               ].map(s => (
                 <div key={s.file} style={{ position: "relative", overflow: "hidden", borderRadius: 10, border: "1px solid #2a1a3a", background: "#0e0a14" }}>
                   <Image
@@ -356,9 +339,9 @@ export default function HomePage() {
       <section style={{ padding: "80px 24px", borderTop: "1px solid #141414" }}>
         <div style={{ maxWidth: W, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <span className="section-label">Processo</span>
+            <span className="section-label">{t("sect_process")}</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0" }}>
-              Do briefing ao app publicado
+              {t("steps_h2")}
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 32 }}>
@@ -382,11 +365,11 @@ export default function HomePage() {
       <section id="pacotes" style={{ padding: "80px 24px", borderTop: "1px solid #141414", background: "#0a0a0a" }}>
         <div style={{ maxWidth: W, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <span className="section-label">Planos</span>
+            <span className="section-label">{t("sect_plans")}</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0" }}>
-              Escolha seu pacote
+              {t("packages_h2")}
             </h2>
-            <p style={{ color: "#777", marginTop: 12, fontSize: "1rem" }}>Todos incluem personalização completa da marca</p>
+            <p style={{ color: "#777", marginTop: 12, fontSize: "1rem" }}>{t("packages_sub")}</p>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
@@ -397,7 +380,7 @@ export default function HomePage() {
                     position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
                     background: "#e50914", color: "#fff", fontSize: "0.72rem", fontWeight: 700,
                     letterSpacing: "0.08em", padding: "4px 14px", borderRadius: 100, whiteSpace: "nowrap"
-                  }}>MAIS ESCOLHIDO</div>
+                  }}>{t("pkg_most_chosen")}</div>
                 )}
                 <div style={{ marginBottom: 8 }}>
                   <h3 style={{ fontWeight: 800, fontSize: "1.3rem", color: "#f0f0f0" }}>{pkg.title}</h3>
@@ -405,7 +388,7 @@ export default function HomePage() {
                 </div>
                 <p style={{ fontSize: "1.5rem", fontWeight: 800, color: pkg.featured ? "#e50914" : "#f0f0f0", margin: "16px 0" }}>
                   {pkg.price}
-                  <span style={{ fontSize: "0.85rem", fontWeight: 400, color: "#666" }}> — solicite proposta</span>
+                  <span style={{ fontSize: "0.85rem", fontWeight: 400, color: "#666" }}>{t("pkg_price_note")}</span>
                 </p>
                 <hr className="divider" style={{ marginBottom: 20 }} />
                 <ul className="check-list" style={{ flex: 1 }}>
@@ -414,7 +397,7 @@ export default function HomePage() {
                 <a href={wa} target="_blank" rel="noreferrer"
                   className={pkg.featured ? "btn-red" : "btn-ghost"}
                   style={{ marginTop: 28, textAlign: "center", justifyContent: "center" }}>
-                  Solicitar este plano
+                  {t("pkg_request")}
                 </a>
               </div>
             ))}
@@ -430,19 +413,19 @@ export default function HomePage() {
         textAlign: "center",
       }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
-          <span className="section-label">Pronto para começar?</span>
+          <span className="section-label">{t("sect_ready")}</span>
           <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.03em", color: "#f0f0f0", margin: "12px 0 20px" }}>
-            Lance seu app de streaming hoje
+            {t("cta_h2")}
           </h2>
           <p style={{ color: "#888", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: 40 }}>
-            Entre em contato agora e receba uma proposta personalizada em até 24 horas. Sem compromisso.
+            {t("cta_sub")}
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <a href={wa} target="_blank" rel="noreferrer" className="btn-red" style={{ fontSize: "1rem", padding: "16px 32px" }}>
-              💬 Falar no WhatsApp
+              {t("cta_whatsapp")}
             </a>
             <a href={`mailto:${site.links.email}`} className="btn-ghost" style={{ fontSize: "1rem", padding: "16px 32px" }}>
-              ✉️ Enviar e-mail
+              {t("cta_email")}
             </a>
           </div>
         </div>
