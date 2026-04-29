@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: "Plataformas Suportadas",
+  description:
+    "Apps OTT white-label para Samsung TV (Tizen), LG TV (webOS), Android TV, Fire TV, Apple TV, Roku, iOS, Android, Web e desktop. Veja todas as plataformas disponíveis.",
+  alternates: { canonical: "/plataformas" },
+  openGraph: {
+    title: "Plataformas — YourottApp",
+    description: "12 plataformas suportadas: Samsung TV, LG TV, Android TV, Fire TV, Apple TV, Roku, iOS, Android, Web e mais.",
+    url: "https://yourottapp.com/plataformas",
+  },
+};
 
 export default function PlataformasPage() {
   return (

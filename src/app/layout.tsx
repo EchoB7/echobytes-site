@@ -17,23 +17,48 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "YourottApp — Apps OTT White-Label",
+    default: "YourottApp — App IPTV e OTT White-Label para Smart TV, Mobile e Web",
     template: "%s — YourottApp",
   },
   description:
-    "Apps OTT white-label para Samsung TV, LG, Roku, Android, iOS, Apple TV, Fire TV, Web e desktop. Sua marca em 12 plataformas.",
+    "Crie seu app de streaming white-label com sua marca em Samsung TV, LG TV, Android TV, Fire TV, Apple TV, Roku, iOS, Android e Web. Integração com Xtream Codes, M3U e TMDB. Proposta em 24h.",
   applicationName: "YourottApp",
   authors: [{ name: "YourottApp" }],
+  keywords: [
+    "app IPTV white-label",
+    "app OTT white-label",
+    "app Smart TV personalizado",
+    "app streaming white-label",
+    "app IPTV Samsung TV",
+    "app IPTV Android TV",
+    "app IPTV Android iOS",
+    "desenvolvimento app OTT",
+    "app hotel IPTV",
+    "app revendedor IPTV",
+    "white-label streaming app",
+    "OTT platform white-label",
+  ],
   metadataBase: new URL("https://yourottapp.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "YourottApp — Apps OTT White-Label",
+    title: "YourottApp — App IPTV e OTT White-Label",
     description:
-      "Lance seu streaming em qualquer tela com app white-label profissional. 12 plataformas, entrega em 30 dias.",
+      "Lance seu app de streaming com sua marca em 12 plataformas: Samsung TV, LG, Android TV, Fire TV, Apple TV, Roku, iOS, Android e Web. Integração com Xtream Codes e M3U. Proposta personalizada em 24h.",
     url: "https://yourottapp.com",
     siteName: "YourottApp",
     locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YourottApp — App IPTV e OTT White-Label",
+    description:
+      "Seu app de streaming com sua marca em Samsung TV, Android TV, iOS, Android e mais. Proposta em 24h.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 };
 

@@ -191,24 +191,44 @@ export const site: SiteConfig = {
     ],
     faq: [
       {
+        q: "Quanto custa para desenvolver um app OTT white-label?",
+        a: "O valor varia conforme o número de plataformas, integrações e funcionalidades. Trabalhamos com projetos a partir do plano Start (MVP em Smart TV + mobile). Entre em contato para receber uma proposta personalizada — sem compromisso e em até 24h.",
+      },
+      {
+        q: "Quanto tempo leva para entregar o app?",
+        a: "Um MVP (Smart TV + mobile) costuma ser entregue em 4 a 8 semanas após o kickoff, dependendo do escopo e das integrações. Projetos mais complexos, com mais plataformas ou integrações avançadas, têm prazo definido no diagnóstico inicial.",
+      },
+      {
+        q: "Preciso ter programação de conteúdo ou catálogo próprio?",
+        a: "Não necessariamente. Integramos com seu painel, API ou CMS existente — seja Xtream Codes, M3U, TMDB ou sistema próprio. Se você já tem o conteúdo, cuidamos do app.",
+      },
+      {
         q: "Vocês entregam para todas as plataformas?",
-        a: "Sim — atendemos Smart TVs, set-top boxes, mobile e web. No kickoff, confirmamos o escopo por plataforma, requisitos de store e integrações.",
+        a: "Sim — atendemos Samsung TV, LG TV, Android TV, Fire TV, Apple TV, Roku, iOS, Android, Web e desktop. No kickoff, confirmamos o escopo por plataforma, requisitos de store e integrações.",
       },
       {
         q: "Vocês fazem publicação nas lojas (Samsung/LG/Google/Apple)?",
-        a: "Podemos apoiar o processo de publicação e homologação conforme a plataforma e o seu modelo (conta do desenvolvedor, políticas e requisitos).",
+        a: "Podemos apoiar o processo de publicação e homologação conforme a plataforma e o seu modelo (conta do desenvolvedor, políticas e requisitos). Orientamos em cada etapa.",
       },
       {
         q: "Dá para integrar com meu painel/CMS/API atual?",
-        a: "Sim. Trabalhamos por integração via API e adaptamos o app ao seu catálogo, autenticação e regras de acesso.",
+        a: "Sim. Trabalhamos por integração via API e adaptamos o app ao seu catálogo, autenticação e regras de acesso — incluindo Xtream Codes, M3U, TMDB, EPG e painéis de revendedor.",
+      },
+      {
+        q: "O app fica com minha marca ou com a marca de vocês?",
+        a: "100% com a sua marca. Logo, cores, tipografia, splash screen — tudo personalizado. O usuário final não verá nenhuma referência à YourottApp.",
+      },
+      {
+        q: "E se eu quiser adicionar plataformas depois?",
+        a: "Sem problema. O projeto pode evoluir por etapas. Começamos com MVP e escalamos para outras plataformas conforme seu crescimento e orçamento.",
       },
       {
         q: "Quais modelos de monetização vocês suportam?",
-        a: "SVOD, AVOD e TVOD/PPV, além de modelos híbridos. A escolha depende do seu produto e da sua operação.",
+        a: "SVOD (assinatura), AVOD (anúncios), TVOD/PPV (pay-per-view) e modelos híbridos. A escolha depende do seu produto e da sua operação.",
       },
       {
         q: "Como funciona suporte e manutenção?",
-        a: "Oferecemos manutenção corretiva e evolutiva. Definimos SLAs e rotina de atualização conforme o plano contratado.",
+        a: "Oferecemos manutenção corretiva e evolutiva. Definimos SLAs e rotina de atualização conforme o plano contratado. Você não fica sozinho após o lançamento.",
       },
     ],
   },

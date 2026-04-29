@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { getWhatsAppUrl, site } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: "Modelos e Segmentos",
+  description:
+    "Soluções OTT white-label para provedores IPTV, hotéis (hospitality) e operações que querem lançar TV + mobile. Veja os modelos de projeto disponíveis.",
+  alternates: { canonical: "/modelos" },
+  openGraph: {
+    title: "Modelos — YourottApp",
+    description: "App white-label para IPTV, hotel/hospitality e MVP TV+mobile. Veja os modelos de projeto.",
+    url: "https://yourottapp.com/modelos",
+  },
+};
 
 export default function ModelosPage() {
   const whatsappUrl = getWhatsAppUrl(site.links.whatsapp);

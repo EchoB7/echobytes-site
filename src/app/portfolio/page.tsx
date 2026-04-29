@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import { SiteFooter } from "@/components/site-footer";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "Veja exemplos reais de apps OTT white-label desenvolvidos pela YourottApp: Smart TV, Android TV, iOS e mobile. Interface profissional com sua marca.",
+  alternates: { canonical: "/portfolio" },
+  openGraph: {
+    title: "Portfolio — YourottApp",
+    description: "Exemplos reais de apps IPTV e OTT white-label: Smart TV, Android TV, iOS e mobile.",
+    url: "https://yourottapp.com/portfolio",
+  },
+};
 
 const smartTvImages = [
   "/portfolio/tv/Home.png",

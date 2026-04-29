@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: "Perguntas Frequentes (FAQ)",
+  description:
+    "Dúvidas sobre app IPTV white-label? Veja respostas sobre preço, prazo de entrega, plataformas, integrações com Xtream Codes e M3U, publicação nas lojas e suporte.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "FAQ — YourottApp",
+    description: "Respostas sobre desenvolvimento de app OTT white-label: preço, prazo, plataformas e integrações.",
+    url: "https://yourottapp.com/faq",
+  },
+};
 
 export default function FaqPage() {
   return (
