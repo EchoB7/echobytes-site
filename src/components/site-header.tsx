@@ -65,18 +65,20 @@ export function SiteHeader() {
               onClick={() => setLangOpen((v) => !v)}
               style={{
                 display: "flex", alignItems: "center", gap: 6,
-                background: "transparent", border: "1px solid #333",
-                borderRadius: 8, padding: "6px 10px", cursor: "pointer",
-                color: "#ccc", fontSize: "0.82rem", fontWeight: 600,
-                transition: "border-color 0.2s",
+                background: "#1a1a1a", border: "2px solid #e50914",
+                borderRadius: 8, padding: "6px 12px", cursor: "pointer",
+                color: "#fff", fontSize: "0.85rem", fontWeight: 700,
+                transition: "background 0.2s, border-color 0.2s",
+                boxShadow: "0 0 8px rgba(229,9,20,0.35)",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#e50914")}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#333")}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#e50914"; e.currentTarget.style.color = "#fff"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#1a1a1a"; e.currentTarget.style.color = "#fff"; }}
               aria-label="Select language"
+              title="Idioma / Language"
             >
-              <span style={{ fontSize: "1rem" }}>{current.flag}</span>
-              <span className="hidden sm:inline">{current.code.toUpperCase()}</span>
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style={{ opacity: 0.6 }}>
+              <span style={{ fontSize: "1.1rem" }}>{current.flag}</span>
+              <span>{current.code.toUpperCase()}</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style={{ opacity: 0.8 }}>
                 <path d="M1 3l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
               </svg>
             </button>
