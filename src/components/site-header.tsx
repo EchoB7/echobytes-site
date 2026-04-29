@@ -21,7 +21,7 @@ export function SiteHeader() {
           href="/"
           className="flex items-center gap-2.5 font-bold tracking-tight text-white hover:opacity-90"
         >
-          <Image src="/icon.png" alt="Echobytes" width={32} height={32} className="rounded-lg" />
+          <Image src="/icon.png" alt="YourottApp" width={32} height={32} className="rounded-lg" />
           <span style={{ color: "#f0f0f0" }}>{site.brand.name}</span>
         </Link>
 

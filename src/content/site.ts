@@ -34,8 +34,8 @@ export type SiteConfig = {
 
 export const site: SiteConfig = {
   brand: {
-    name: "Echobytes",
-    domain: "echobytes.com.br",
+    name: "YourottApp",
+    domain: "yourottapp.com",
     tagline: "Apps OTT white-label sob medida para Smart TVs, mobile e web.",
   },
   links: {
@@ -48,7 +48,7 @@ export const site: SiteConfig = {
       url: "#",
       label: "Agendar demonstração",
     },
-    email: "contato@echobytes.com.br",
+    email: "contato@yourottapp.com",
   },
   sections: {
     segments: [

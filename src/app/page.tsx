@@ -174,7 +174,7 @@ export default function Home() {
         {/* POR QUE */}
         <section className="py-16 sm:py-20">
           <SectionHeader
-            eyebrow="Por que Echobytes"
+            eyebrow="Por que YourottApp"
             title="Uma base sólida para um produto de streaming premium"
             description="Mais do que um player: é uma experiência completa, desenhada para controle remoto, escala e retenção."
           />
