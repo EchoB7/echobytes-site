@@ -40,7 +40,7 @@ export const site: SiteConfig = {
   },
   links: {
     whatsapp: {
-      phoneE164: "+5500000000000",
+      phoneE164: "+5521990590516",
       message:
         "Olá! Quero um app white-label para IPTV/Hotel (MVP: Smart TV + mobile). Podemos falar?",
     },
