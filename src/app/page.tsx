@@ -314,6 +314,41 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* ── MODELO 2 ── */}
+          <div style={{ marginTop: 64 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 8 }}>
+              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#a855f7", textTransform: "uppercase" }}>Modelo 2 — Interface Alternativa</p>
+              <div style={{ flex: 1, height: 1, background: "#1e1e1e" }} />
+            </div>
+            <p style={{ color: "#666", fontSize: "0.85rem", marginBottom: 24 }}>Skin alternativo com paleta roxa e dark — mesmo app, visual diferente.</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
+              {[
+                { file: "Home.png",         label: "Home" },
+                { file: "Live.png",         label: "TV ao Vivo" },
+                { file: "SearchLive.png",   label: "Busca — Ao Vivo" },
+                { file: "Movies.png",       label: "Filmes" },
+                { file: "MoviesSinopse.png",label: "Sinopse do Filme" },
+                { file: "Series.png",       label: "Séries" },
+                { file: "Player.png",       label: "Player" },
+                { file: "SearchMovies.png", label: "Busca — Filmes" },
+              ].map(s => (
+                <div key={s.file} style={{ position: "relative", overflow: "hidden", borderRadius: 10, border: "1px solid #2a1a3a", background: "#0e0a14" }}>
+                  <Image
+                    src={`/portfolio/modelo2/${s.file}`}
+                    alt={s.label}
+                    width={560}
+                    height={315}
+                    className="screenshot-img"
+                    style={{ width: "100%", height: "auto", display: "block", borderRadius: 0 }}
+                  />
+                  <div style={{ padding: "10px 14px", borderTop: "1px solid #2a1a3a" }}>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, color: "#c084fc" }}>{s.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
