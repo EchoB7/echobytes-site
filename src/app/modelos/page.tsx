@@ -1,5 +1,4 @@
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { getWhatsAppUrl, site } from "@/content/site";
 
 export default function ModelosPage() {
@@ -8,7 +7,7 @@ export default function ModelosPage() {
 
   return (
     <div className="min-h-full bg-zinc-50 text-zinc-950">
-      <SiteHeader />
+      
       <main className="mx-auto w-full max-w-5xl px-6 py-14 sm:py-16">
         <p className="text-sm font-medium text-zinc-500">Modelos</p>
         <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">

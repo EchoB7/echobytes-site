@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 
 const smartTvImages = [
   "/portfolio/tv/Home.png",
@@ -42,7 +41,7 @@ const mobileImages = [
 export default function PortfolioPage() {
   return (
     <div className="min-h-full bg-zinc-50 text-zinc-950">
-      <SiteHeader />
+      
       <main className="mx-auto w-full max-w-5xl px-6 py-14 sm:py-16">
         <p className="text-sm font-medium text-zinc-500">Portfólio</p>
         <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
