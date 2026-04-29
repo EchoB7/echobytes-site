@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import {
   siSamsung, siLg, siRoku, siGoogletv,
@@ -39,6 +40,97 @@ const PLATFORMS: Platform[] = [
   { label: "macOS",       svgPath: siApple.path,        hex: "999999" },
   { label: "Linux",       svgPath: siLinux.path,        hex: siLinux.hex },
 ];
+
+// ── Lead capture form ────────────────────────────────────────
+const PLATFORM_OPTIONS = [
+  "Android TV", "Samsung TV", "LG TV", "Apple TV",
+  "Fire TV", "Roku", "iOS", "Android", "Web Player",
+];
+
+function LeadForm({ t }: { t: (k: Parameters<ReturnType<typeof useLanguage>["t"]>[0]) => string }) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [platforms, setPlatforms] = useState<string[]>([]);
+  const [msg, setMsg] = useState("");
+
+  function togglePlatform(p: string) {
+    setPlatforms(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]);
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const parts = [
+      `*Nome:* ${name}`,
+      phone ? `*WhatsApp/Tel:* ${phone}` : null,
+      platforms.length ? `*Plataformas:* ${platforms.join(", ")}` : null,
+      msg ? `*Mensagem:* ${msg}` : null,
+    ].filter(Boolean).join("\n");
+    window.open(`https://wa.me/5521990590516?text=${encodeURIComponent(parts)}`, "_blank", "noreferrer");
+  }
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%", background: "#111", border: "1px solid #2a2a2a",
+    borderRadius: 10, color: "#f0f0f0", fontSize: "0.95rem",
+    padding: "12px 16px", outline: "none", boxSizing: "border-box",
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ textAlign: "left", marginTop: 0 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+        <div>
+          <label style={{ display: "block", color: "#aaa", fontSize: "0.85rem", marginBottom: 6 }}>
+            {t("form_name_label")} *
+          </label>
+          <input required style={inputStyle} value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder={t("form_placeholder_name")} />
+        </div>
+        <div>
+          <label style={{ display: "block", color: "#aaa", fontSize: "0.85rem", marginBottom: 6 }}>
+            {t("form_phone_label")}
+          </label>
+          <input style={inputStyle} value={phone}
+            onChange={e => setPhone(e.target.value)}
+            placeholder={t("form_placeholder_phone")} />
+        </div>
+      </div>
+
+      <div style={{ marginBottom: 16 }}>
+        <label style={{ display: "block", color: "#aaa", fontSize: "0.85rem", marginBottom: 10 }}>
+          {t("form_platform_label")}
+        </label>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+          {PLATFORM_OPTIONS.map(p => (
+            <button key={p} type="button" onClick={() => togglePlatform(p)}
+              style={{
+                padding: "6px 14px", borderRadius: 20, cursor: "pointer", transition: "all 0.15s",
+                border: platforms.includes(p) ? "1.5px solid #e50914" : "1.5px solid #333",
+                background: platforms.includes(p) ? "rgba(229,9,20,0.15)" : "transparent",
+                color: platforms.includes(p) ? "#ff4d5a" : "#888",
+                fontSize: "0.82rem",
+              }}>
+              {p}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ marginBottom: 24 }}>
+        <label style={{ display: "block", color: "#aaa", fontSize: "0.85rem", marginBottom: 6 }}>
+          {t("form_message_label")}
+        </label>
+        <textarea rows={3} style={{ ...inputStyle, resize: "vertical" }} value={msg}
+          onChange={e => setMsg(e.target.value)}
+          placeholder={t("form_placeholder_message")} />
+      </div>
+
+      <button type="submit" className="btn-red"
+        style={{ width: "100%", fontSize: "1rem", padding: "16px 32px", justifyContent: "center" }}>
+        {t("form_send")}
+      </button>
+    </form>
+  );
+}
 
 // ── Component ──────────────────────────────────────────────────
 export default function HomePage() {
@@ -407,12 +499,12 @@ export default function HomePage() {
 
       {/* ── CTA FINAL ────────────────────────────────────── */}
       <section style={{
-        padding: "100px 24px",
+        padding: "80px 24px 100px",
         borderTop: "1px solid #141414",
         background: "radial-gradient(ellipse 70% 50% at 50% 100%, rgba(229,9,20,0.14) 0%, transparent 70%)",
         textAlign: "center",
       }}>
-        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <span className="section-label">{t("sect_ready")}</span>
           <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.03em", color: "#f0f0f0", margin: "12px 0 20px" }}>
             {t("cta_h2")}
@@ -420,14 +512,7 @@ export default function HomePage() {
           <p style={{ color: "#888", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: 40 }}>
             {t("cta_sub")}
           </p>
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={wa} target="_blank" rel="noreferrer" className="btn-red" style={{ fontSize: "1rem", padding: "16px 32px" }}>
-              {t("cta_whatsapp")}
-            </a>
-            <a href={`mailto:${site.links.email}`} className="btn-ghost" style={{ fontSize: "1rem", padding: "16px 32px" }}>
-              {t("cta_email")}
-            </a>
-          </div>
+          <LeadForm t={t} />
         </div>
       </section>
 
