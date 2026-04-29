@@ -1,23 +1,41 @@
 import Image from "next/image";
+import {
+  siSamsung, siLg, siRoku, siGoogletv,
+  siApple, siAppletv, siAndroid, siLinux, siFirefoxbrowser,
+} from "simple-icons";
 import { getWhatsAppUrl, site } from "@/content/site";
 
 // ── Design tokens ──────────────────────────────────────────────
 const W = 1200; // max-width
 
+// ── Platform SVG icon component ───────────────────────────────
+function BrandIcon({ path, hex, size = 32 }: { path: string; hex: string; size?: number }) {
+  return (
+    <svg role="img" viewBox="0 0 24 24" width={size} height={size} fill={`#${hex}`} xmlns="http://www.w3.org/2000/svg">
+      <path d={path} />
+    </svg>
+  );
+}
+
+// Custom SVGs for brands not in simple-icons
+const WINDOWS_PATH = "M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801";
+const FIRETV_PATH = "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z";
+
 // ── Platform data ──────────────────────────────────────────────
-const PLATFORMS = [
-  { label: "Samsung TV", icon: "📺" },
-  { label: "LG TV",      icon: "📺" },
-  { label: "Roku",       icon: "📡" },
-  { label: "Android TV", icon: "🖥️" },
-  { label: "Fire TV",    icon: "🔥" },
-  { label: "Apple TV",   icon: "🍎" },
-  { label: "Android",    icon: "📱" },
-  { label: "iOS",        icon: "📱" },
-  { label: "Web Player", icon: "🌐" },
-  { label: "Windows",    icon: "💻" },
-  { label: "macOS",      icon: "💻" },
-  { label: "Linux",      icon: "🐧" },
+type Platform = { label: string; svgPath: string; hex: string };
+const PLATFORMS: Platform[] = [
+  { label: "Samsung TV",  svgPath: siSamsung.path,      hex: siSamsung.hex },
+  { label: "LG TV",       svgPath: siLg.path,           hex: siLg.hex },
+  { label: "Roku",        svgPath: siRoku.path,         hex: siRoku.hex },
+  { label: "Android TV",  svgPath: siGoogletv.path,     hex: siGoogletv.hex },
+  { label: "Fire TV",     svgPath: FIRETV_PATH,         hex: "FF9900" },
+  { label: "Apple TV",    svgPath: siAppletv.path,      hex: siAppletv.hex },
+  { label: "Android",     svgPath: siAndroid.path,      hex: siAndroid.hex },
+  { label: "iOS",         svgPath: siApple.path,        hex: siApple.hex },
+  { label: "Web Player",  svgPath: siFirefoxbrowser.path, hex: "FF7139" },
+  { label: "Windows",     svgPath: WINDOWS_PATH,        hex: "0078D4" },
+  { label: "macOS",       svgPath: siApple.path,        hex: "999999" },
+  { label: "Linux",       svgPath: siLinux.path,        hex: siLinux.hex },
 ];
 
 const FEATURES = [
@@ -128,6 +146,11 @@ export default function HomePage() {
       }}>
         <div style={{ maxWidth: W, margin: "0 auto", textAlign: "center" }}>
 
+          {/* Icon */}
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
+            <Image src="/icon.png" alt="YourottApp" width={80} height={80} style={{ borderRadius: 20, boxShadow: "0 0 40px rgba(229,9,20,0.4)" }} />
+          </div>
+
           {/* Badge */}
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#130305", border: "1px solid #3a0009", borderRadius: 100, padding: "6px 14px", marginBottom: 28 }}>
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#e50914", display: "inline-block", animation: "pulse-glow 2s infinite" }}></span>
@@ -193,7 +216,7 @@ export default function HomePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: 12 }}>
             {PLATFORMS.map(p => (
               <div key={p.label} className="platform-badge">
-                <span style={{ fontSize: "1.8rem", lineHeight: 1 }}>{p.icon}</span>
+                <BrandIcon path={p.svgPath} hex={p.hex} size={30} />
                 <span>{p.label}</span>
               </div>
             ))}
@@ -253,10 +276,12 @@ export default function HomePage() {
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0" }}>
               Interface de nível profissional
             </h2>
-            <p style={{ color: "#777", marginTop: 12, fontSize: "1rem" }}>Screenshots reais do app rodando em TV</p>
+            <p style={{ color: "#777", marginTop: 12, fontSize: "1rem" }}>Screenshots reais do app rodando em TV e mobile</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
+          {/* Tab labels */}
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 16 }}>Smart TV / Android TV</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14, marginBottom: 48 }}>
             {SCREENSHOTS.map(s => (
               <div key={s.file} style={{ position: "relative", overflow: "hidden", borderRadius: 10, border: "1px solid #1e1e1e", background: "#111" }}>
                 <Image
@@ -270,6 +295,22 @@ export default function HomePage() {
                 <div style={{ padding: "10px 14px", borderTop: "1px solid #1e1e1e" }}>
                   <p style={{ fontSize: "0.8rem", fontWeight: 600, color: "#aaa" }}>{s.label}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile screenshots */}
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", color: "#e50914", textTransform: "uppercase", marginBottom: 16 }}>Mobile — Android & iOS</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 14 }}>
+            {["1", "2", "3", "4"].map((n, i) => (
+              <div key={n} style={{ overflow: "hidden", borderRadius: 16, border: "1px solid #1e1e1e", background: "#111" }}>
+                <Image
+                  src={`/portfolio/mobile/${n}.jpeg`}
+                  alt={`Mobile tela ${i + 1}`}
+                  width={360}
+                  height={640}
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
               </div>
             ))}
           </div>
