@@ -427,6 +427,54 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── DESENVOLVIMENTO DE SITE ─────────────────────── */}
+      <section style={{ padding: "80px 24px", borderTop: "1px solid #141414" }}>
+        <div style={{ maxWidth: W, margin: "0 auto" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 48, alignItems: "center" }}>
+            {/* Left — text */}
+            <div style={{ flex: "1 1 320px" }}>
+              <span className="section-label">{t("sect_webdev")}</span>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, letterSpacing: "-0.025em", color: "#f0f0f0", margin: "12px 0 16px" }}>
+                {t("webdev_h2")}
+              </h2>
+              <p style={{ color: "#777", fontSize: "1rem", lineHeight: 1.7, marginBottom: 28 }}>
+                {t("webdev_sub")}
+              </p>
+              <a
+                href={wa}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost"
+                style={{ fontSize: "0.95rem", padding: "12px 24px", display: "inline-block" }}
+              >
+                {t("webdev_cta")}
+              </a>
+            </div>
+
+            {/* Right — cards */}
+            <div style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 16 }}>
+              {[
+                { icon: "🌐", title: t("webdev_card1_title"), desc: t("webdev_card1_desc") },
+                { icon: "👤", title: t("webdev_card2_title"), desc: t("webdev_card2_desc") },
+                { icon: "🔍", title: t("webdev_card3_title"), desc: t("webdev_card3_desc") },
+              ].map(card => (
+                <div key={card.title} style={{
+                  display: "flex", gap: 16, alignItems: "flex-start",
+                  background: "#0d0d0d", border: "1px solid #1e1e1e",
+                  borderRadius: 14, padding: "20px 22px",
+                }}>
+                  <span style={{ fontSize: "1.4rem", lineHeight: 1, marginTop: 2 }}>{card.icon}</span>
+                  <div>
+                    <p style={{ fontWeight: 700, color: "#f0f0f0", fontSize: "0.95rem", marginBottom: 4 }}>{card.title}</p>
+                    <p style={{ color: "#666", fontSize: "0.87rem", lineHeight: 1.65 }}>{card.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── COMO FUNCIONA ────────────────────────────────── */}
       <section style={{ padding: "80px 24px", borderTop: "1px solid #141414" }}>
         <div style={{ maxWidth: W, margin: "0 auto" }}>
